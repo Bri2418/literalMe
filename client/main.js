@@ -18,7 +18,7 @@ Template.myGallery.helpers({
 
 Template.myGallery.events({
     'click .js-delete'(event, instance) {
-	    // console.log("deleting...");
+	    console.log("deleting...");
 	    var myId = this._id;
 	    $("#deleteId").val(myId);
 	    $("#confirmModal").modal("show");
@@ -32,11 +32,11 @@ Template.myGallery.events({
 	    var ePath = bookdb.findOne({_id:myId}).path;
 	    var eAuth = bookdb.findOne({_id:myId}).auth;
 	    var eDesc = bookdb.findOne({_id:myId}).desc;
-	   // $("#editAuth").val(eAuth);
-	    //$("#editTitle").val(eTitle);
-	   // $("#editPath").val(ePath);
-	   // $("#editDesc").val(eDesc);
-	  //  $(".editHolder").attr("src", ePath);
+	    $("#editAuth").val(eAuth);
+	    $("#editTitle").val(eTitle);
+	    $("#editPath").val(ePath);
+	    $("#editDesc").val(eDesc);
+	    $(".editHolder").attr("src", ePath);
     }  
 });
 
@@ -97,15 +97,4 @@ Template.editImage.events({
   }
 });
 
-//Template.hello.helpers({
- // counter() {
- //   return Template.instance().counter.get();
- // },
-//});
 
-//Template.hello.events({
- // 'click button'(event, instance) {
-    // increment the counter when button is clicked
-  //  instance.counter.set(instance.counter.get() + 1);
- // },
-//});
