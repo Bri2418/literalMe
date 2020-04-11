@@ -37,13 +37,31 @@ Template.myGallery.events({
 	    $("#editPath").val(ePath);
 	    $("#editDesc").val(eDesc);
 	    $(".editHolder").attr("src", ePath);
-    }  
+    },
+ 	'click .js-confirm'(event, instance){
+    var myId = $("#deleteId").val();
+    $("#"+myId).fadeOut('slow',function(){
+     bookdb.remove({_id:myId});
+     console.log(myId);
+    });
+  },
+    "click .rating"(event) {
+        var myId = this.picId;
+        const value = $(event.target).val();
+        console.log(myId+" : "+value);
+        bookdb.update({_id: myId},
+      {$set:{
+        "ratings": value
+      }}
+    );
+    }
 });
 
 Template.myJumbo.events({
 	'click .js-addbook'(event, instance){
-    	console.log("Open modal");
+     console.log("Open modal");
     },
+
 	'click .js-close'(event, instance){
     console.log("closing modal");
     $("#bookTitle").val("");
@@ -85,7 +103,8 @@ Template.editImage.events({
     var newPath = $("#editPath").val();
     var newDesc = $("#editDesc").val();
     var newAuth = $("#editAuth").val();
-    console.log("updating "+updateId+" Book with title: "+newTitle+" and its path is "+newPath+" and its description "+newDesc);
+    var updateId = $("#editId").val();
+    console.log("The new ID "+updateId+"The Author is "+newAuth+" Book with title "+newTitle+" and its path is "+newPath+" and its description "+newDesc);
     bookdb.update({_id: updateId},
       {$set:{
         "title": newTitle,

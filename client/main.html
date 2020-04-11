@@ -52,14 +52,15 @@
       <div class="col-4" id={{_id}}>
         <div class="card mb-4 shadow-sm ">
               <img class="man-body" src={{path}} alt=""> 
-              <div class="card-body ">
+              <div class="card-body n-body">
                 <p class="card-text"><h2>{{title}}</h2></p>
                 <p class="card-text"><h3>{{auth}}</h3></p>
                 <p><button type="button" class="btn btn-default btn-sm js-like">
-                     <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                     <i class="far fa-thumbs-up"></i> Like
                    </button>
+
                   <button type="button" class="btn btn-default btn-sm js-unlike">
-                   <span class="glyphicon glyphicon-thumbs-down"></span> Unlike
+                   <i class="far fa-thumbs-down"></i> Unlike
                   </button>
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -67,16 +68,30 @@
                     <button type="button" class="btn btn-sm btn-outline-secondary js-view">View</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary js-edit">Edit</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary js-delete">Delete</button>
-                  </div>
-                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<button type='button' class='btn btn-sm btn-outline-secondary js-delete'>Delete</button>">Description</button>
-                        
+                  </div>                     
                   <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
       </div>
     {{/each}}
-
+     
+        <div class="modal fade" id="confirmModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Would You Like To Delete This</h5>
+            
+          </div>
+          
+          <div class="modal-footer">
+            <input type="hidden" id="deleteId">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary js-confirm"  data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -147,7 +162,7 @@
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
-         {{> myGallery}}
+         {{> myGallery}}  
         </div> <!-- /row for all cards -->
       </div>
     </div>
