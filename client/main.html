@@ -8,6 +8,7 @@
     {{> mainBody}}
     {{> footerBar}}
     {{> editImage}}
+    {{> BookDescription}} 
   </div>
 </body>
 
@@ -51,25 +52,20 @@
     {{#each allBooks}}
       <div class="col-4" id={{_id}}>
         <div class="card mb-4 shadow-sm ">
-              <img class="man-body" src={{path}} alt=""> 
+              <img class="man-body text-center" src={{path}} alt=""> 
               <div class="card-body n-body">
-                <p class="card-text"><h2>{{title}}</h2></p>
-                <p class="card-text"><h3>{{auth}}</h3></p>
-                <p><button type="button" class="btn btn-default btn-sm js-like">
-                     <i class="far fa-thumbs-up"></i> Like
-                   </button>
-
-                  <button type="button" class="btn btn-default btn-sm js-unlike">
-                   <i class="far fa-thumbs-down"></i> Unlike
-                  </button>
-                </p>
+                <p class="card-text c-text text-break "><h4>{{title}}</h4></p>
+                <p class="card-text"><h5>{{auth}}</h5></p>
+                <div>
+                  <i class="fa fa-thumbs-up" style="font-size:30px;color:blue"></i> 
+                  <i class="fa fa-thumbs-down" style="font-size:30px;color:green"></i> 
+                </div>       
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary js-view">View</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary js-edit">Edit</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary js-delete">Delete</button>
                   </div>                     
-                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
@@ -108,47 +104,47 @@
           </button>
           <!-- Modal -->
           <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Please Add Your Best Book...</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <img class="placeHolder" src="download.png" alt="">
-           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1">Title</span>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Please Add Your Best Book...</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <img class="placeHolder" src="download.png" alt="">
+                 <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">Title</span>
+                  </div>
+                  <input type="text" class="form-control" id="bookTitle" placeholder="Give your image a title" aria-label="Title" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text" >Author</span>
+                  </div>
+                  <input type="text" class="form-control" id="bookAuth" placeholder="Enter the author of the book" aria-label="Title" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Path</span>
+                  </div>
+                  <input type="text" class="form-control" id="bookPath" placeholder="Paste image path here" aria-label="Path" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Description</span>
+                  </div>
+                  <input type="text" class="form-control" id="bookDesc" placeholder="Enter the discription of the book" aria-label="Title" aria-describedby="basic-addon1">
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary js-close" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary js-save">Save changes</button>
+                </div>
+              </div>
             </div>
-            <input type="text" class="form-control" id="bookTitle" placeholder="Give your image a title" aria-label="Title" aria-describedby="basic-addon1">
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" >Author</span>
-            </div>
-            <input type="text" class="form-control" id="bookAuth" placeholder="Enter the author of the book" aria-label="Title" aria-describedby="basic-addon1">
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Path</span>
-            </div>
-            <input type="text" class="form-control" id="bookPath" placeholder="Paste image path here" aria-label="Path" aria-describedby="basic-addon1">
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Description</span>
-            </div>
-            <input type="text" class="form-control" id="bookDesc" placeholder="Enter the discription of the book" aria-label="Title" aria-describedby="basic-addon1">
-          </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary js-close" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary js-save">Save changes</button>
-          </div>
-        </div>
-      </div>
           </div>
         </div>
       </div>
@@ -209,12 +205,37 @@
           </div>
           </div>
         <div class="modal-footer">
+          <input type="hidden" id="editId">
           <button type="button" class="btn btn-secondary js-exitAdd" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary js-upImage">Save changes</button>
         </div>
       </div>
     </div>
   </div>
+</template>
+
+<template name="BookDescription">
+
+<!-- Modal -->
+<div class="modal fade" id="readDesc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{desc}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary js-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <template name="footerBar">
